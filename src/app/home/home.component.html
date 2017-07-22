@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="row rowmain">
+            <div class="col-xs-12 col-md-4 stream" *ngFor="let stream of streams">
+                <a [routerLink]="['/stream/' + stream.idStream]" class="thumbnail" (click)="detectVideoSource(stream)">
+                    <img src="{{stream.logoImage}}">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

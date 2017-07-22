@@ -1,0 +1,98 @@
+<!-- BEGIN # BOOTSNIP INFO -->
+<div class="container">
+    <div class="row">
+        <p class="text-center">
+            <a href="#" class="btn btn-success btn-lg pull-right plus_button" role="button"
+               data-toggle="modal" data-target="#login-modal" (click)="clearForm()">
+                Add Channel
+            </a>
+        </p>
+    </div>
+</div>
+<!-- END # BOOTSNIP INFO -->
+
+<!-- BEGIN # MODAL LOGIN -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <div id="div-forms">
+                    <!-- Begin # Login Form -->
+                    <form id="login-form">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" type="text" name="name" id="name"
+                                       placeholder="Name" [(ngModel)]="newChannel.name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Link</label>
+                                <input class="form-control" type="text" name="link" id="link"
+                                       placeholder="Link" [(ngModel)]="newChannel.link" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="5" name="description"
+                                          placeholder="Description"
+                                          [(ngModel)]="newChannel.description" required>
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div>
+                                <button type="submit"
+                                        *ngIf="!isChangingChannel"
+                                        class="btn btn-lg btn-block btn-success add_button"
+                                        (click)="addChannel()">Add
+                                </button>
+                                <button type="submit"
+                                        *ngIf="isChangingChannel"
+                                        class="btn btn-lg btn-block btn-success add_button"
+                                        (click)="updateChannel()">Update
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END # MODAL LOGIN -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Channels</h2>
+            <table class="table table-striped">
+                <tr class="table-row">
+                    <th>id</th>
+                    <th>name</th>
+                    <th>link</th>
+                    <th>description</th>
+                    <th>type</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let channel of channels" class="table-row">
+                    <td>{{channel.id}}</td>
+                    <td>{{channel.name}}</td>
+                    <td>{{channel.link}}</td>
+                    <td>{{channel.description}}</td>
+                    <td>{{channel.type}}</td>
+                    <td id="actions">
+                        <span class="glyphicon glyphicon-pencil"
+                              aria-hidden="true" id="update" data-toggle="modal"
+                              data-target="#login-modal" (click)="findChannelToUpdate(channel)">
+                        </span>
+                        <span class="glyphicon glyphicon-remove"
+                              id="remove" aria-hidden="true"
+                              (click)="deleteChannel(channel.id)">
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

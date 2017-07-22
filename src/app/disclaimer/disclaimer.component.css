@@ -1,0 +1,23 @@
+body {
+  padding-top: 50px;
+}
+
+.main {
+  padding-top: 30px;
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+.jumbotron{
+  padding-top: 5px;
+}
+
+
+.main > .rowmain{
+  padding-top: 45px;
+}

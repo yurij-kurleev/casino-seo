@@ -1,0 +1,305 @@
+.navbar{
+    background-color: #5d7aaa;
+}
+
+.navbar-header{
+    align-content: center;
+}
+.navbar-brand{
+    text-align: center;
+    color: white;
+}
+
+.navbar .navbarli .navbara{
+    font-size: 16px;
+    text-transform: uppercase;
+    color:white;
+}
+
+.navbar-nav{
+    padding-left: 11%;
+}
+
+.navbar .navbarli .navbara:hover{
+    color:#d6e5ff;
+    background-color: inherit;
+}
+
+.navbar-fixed-top {
+    border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+    display: none;
+}
+@media (min-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+    }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+    padding-bottom: 20px;
+    text-align: center;
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+.nav-sidebar > li > p > a{
+
+
+    font-size: 16px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+}
+
+
+.glyphicon-remove:hover{
+    color: red;
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+    color: #fff;
+    background-color: #428bca;
+}
+
+.casinoselect{
+    display: inline-block;
+    align-content: center;
+    width: 90%
+}
+
+.addbtn{
+    width: 90%;
+
+}
+
+.addbtn:hover{
+    cursor:pointer;
+    width: 90%;
+
+}
+
+.addbtn:disabled{
+    cursor:default;
+    width: 90%;
+
+}
+
+
+.circle-btn{
+    position: fixed;
+    border-radius: 50%;
+    text-align: center;
+    bottom: 10px;
+    right: 10px;
+    font-size: 3rem;
+}
+
+
+
+
+
+
+
+#login-modal .modal-dialog {
+    width: 350px;
+}
+
+#login-modal input[type=text], input[type=password] {
+    margin-top: 10px;
+}
+
+#div-login-msg,
+#div-lost-msg,
+#div-register-msg {
+    border: 1px solid #dadfe1;
+    height: 30px;
+    line-height: 28px;
+    transition: all ease-in-out 500ms;
+}
+
+#div-login-msg.success,
+#div-lost-msg.success,
+#div-register-msg.success {
+    border: 1px solid #68c3a3;
+    background-color: #c8f7c5;
+}
+
+#div-login-msg.error,
+#div-lost-msg.error,
+#div-register-msg.error {
+    border: 1px solid #eb575b;
+    background-color: #ffcad1;
+}
+
+#icon-login-msg,
+#icon-lost-msg,
+#icon-register-msg {
+    width: 30px;
+    float: left;
+    line-height: 28px;
+    text-align: center;
+    background-color: #dadfe1;
+    margin-right: 5px;
+    transition: all ease-in-out 500ms;
+}
+
+#icon-login-msg.success,
+#icon-lost-msg.success,
+#icon-register-msg.success {
+    background-color: #68c3a3 !important;
+}
+
+#icon-login-msg.error,
+#icon-lost-msg.error,
+#icon-register-msg.error {
+    background-color: #eb575b !important;
+}
+
+#img_logo {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+/* #########################################
+   #    override the bootstrap configs     #
+   ######################################### */
+
+.modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: .8;
+}
+
+.modal-content {
+    background-color: #ececec;
+    border: 1px solid #bdc3c7;
+    border-radius: 0px;
+    outline: 0;
+}
+
+.modal-header {
+    min-height: 16.43px;
+    padding: 15px 15px 15px 15px;
+    border-bottom: 0px;
+}
+
+.modal-body {
+    position: relative;
+    padding: 5px 15px 5px 15px;
+}
+
+.modal-footer {
+    padding: 15px 15px 15px 15px;
+    text-align: left;
+    border-top: 0px;
+}
+
+.checkbox {
+    margin-bottom: 0px;
+}
+
+.btn {
+    border-radius:0px;
+}
+
+
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+
+.btn-lg, .btn-group-lg>.btn {
+
+    border-radius: 50%;
+
+
+}
+
+.btn-lg, .btn-group-lg>add_button {
+
+
+    border-radius: 3%;
+}
+
+.add_button{
+    color: white;
+    background-color: #5b5b5b;
+}
+
+.btn-link {
+    padding: 5px 10px 0px 0px;
+    color: #95a5a6;
+}
+
+.btn-link:hover, .btn-link:focus {
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.glyphicon {
+    top: 0;
+}
+
+.form-control {
+    border-radius: 0;
+    margin: 10px 0;
+}
+
+.sidebarli{
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.sidebarli:hover, .sidebarli:focus{
+    background-color: rgba(135, 187, 255, 0.18);
+}
+
+.thumbnail {
+    margin: 10px 2%;
+    cursor: pointer;
+}
+
+.shadowed {
+    opacity: 0.4 !important;
+}
+
+.delete-btn{
+    margin-top: 80px;
+}
+
+.main {
+    padding-top: 0 !important;
+}
+
+.rowmain{
+    padding-top: 0 !important;
+}
+
+.stream img{
+    min-height: 280px;
+}

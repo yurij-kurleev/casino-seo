@@ -1,0 +1,140 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <p class="text-center">
+                <a href="#" class="btn btn-success btn-lg pull-right plus_button" role="button"
+                   data-toggle="modal" data-target="#banner-modal" (click)="clearForm()">
+                    Add Streamer
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <!-- BEGIN # MODAL -->
+    <div class="modal fade" id="banner-modal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <div>
+                        <!-- Begin # Login Form -->
+                        <form id="banner-form">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Nickname*</label>
+                                    <input class="form-control" type="text" name="name"
+                                           placeholder="Nickname" [(ngModel)]="newStreamer.name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description*</label>
+                                    <textarea class="form-control" name="description"
+                                           placeholder="Description" [(ngModel)]="newStreamer.description" required>
+                                    </textarea>
+                                </div>
+                                <div class="form-group" *ngIf="!isChangingStreamer">
+                                    <label>Channel*</label>
+                                    <select class="form-control casinoselect" name="channel" id="sel1"
+                                            [(ngModel)]="newStreamer.channel_id">
+                                        <option *ngFor="let channel of getChannelWithoutOwner()" value="{{channel.id}}">
+                                            {{channel.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Photo*</label>
+                                    <input class="form-control" type="file" name="file"
+                                           placeholder="Casino logo" required
+                                           accept=".png,.jpg,.jpeg"
+                                           id="file">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit"
+                                            *ngIf="!isChangingStreamer"
+                                            class="btn btn-lg btn-block btn-success add_button"
+                                            (click)="addUser()">Add
+                                    </button>
+                                    <button type="submit"
+                                            *ngIf="isChangingStreamer"
+                                            class="btn btn-lg btn-block btn-success add_button"
+                                            (click)="updateUser()">Update
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-2">
+                <h2>Users</h2>
+                <table class="table table-striped">
+                    <tr class="table-row">
+                        <th></th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Channel</th>
+                        <th>Position</th>
+                        <th></th>
+                    </tr>
+                    <tr *ngFor="let streamer of streamers" class="table-row">
+                        <td>
+                            <img src="{{streamer?.image_link}}"
+                                 *ngIf="streamer?.image_link"
+                                 class="logo" alt="logo">
+                            <img src="http://via.placeholder.com/80x80"
+                                 *ngIf="!streamer?.image_link"
+                                 class="logo" alt="logo">
+                        </td>
+                        <td>{{streamer.name}}</td>
+                        <td>{{streamer.description}}</td>
+                        <td>{{streamer.channel_id}}</td>
+                        <td>{{streamer.position}}</td>
+                        <td id="banner-actions">
+                            <span class="glyphicon glyphicon-pencil"
+                                  aria-hidden="true" id="update"
+                                  (click)="findUserToUpdate(streamer)">
+                            </span>
+                            <span class="glyphicon glyphicon-remove"
+                                  *ngIf="!isTopStreamer(streamer)"
+                                  id="remove-user" aria-hidden="true"
+                                  (click)="deleteUser(streamer.id)">
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <div class="form-group ">
+            <label for="sel1">Select User:</label>
+            <select class="form-control casinoselect" [(ngModel)]="newTopStreamer">
+                <option *ngFor="let user of getUnusedUsers()" [ngValue]="user">
+                    {{user.name}}
+                </option>
+            </select>
+            <div>
+                <button class="btn btn-success addbtn"
+                        [disabled]="!newTopStreamer"
+                        (click)="addTopUser(newTopStreamer)">ADD
+                </button>
+            </div>
+        </div>
+        <ul class="nav nav-sidebar" [dragula]='"first-bag"' [dragulaModel]="topStreamers">
+            <li class="sidebarli" *ngFor="let topStreamer of topStreamers">
+                <p>{{topStreamer.name}}
+                    <span class="glyphicon glyphicon-remove"
+                          (click)="deleteTopUser(topStreamer)"></span>
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>

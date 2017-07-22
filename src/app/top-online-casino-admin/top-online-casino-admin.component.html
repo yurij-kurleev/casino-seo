@@ -1,0 +1,156 @@
+<div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+        <label for="comment">Hot page description:</label>
+        <textarea class="form-control" rows="7" id="comment"
+                  [ngModel]="descriptions['page_top_casino']?.text"
+                  (input)="addNewArrayItemOnDemand($event, 'page_top_casino')"></textarea>
+    </div>
+    <button class="btn btn-primary btn-lg col-md-offset-4 col-md-4"
+            (click)="updateDescription('page_top_casino')"
+            *ngIf="isOld['page_top_casino']">
+        Update
+    </button>
+    <button class="btn btn-primary btn-lg col-md-offset-4 col-md-4"
+            *ngIf="!isOld['page_top_casino']"
+            (click)="addDescription('page_top_casino')">
+        Add
+    </button>
+</div>
+
+<div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+        <label for="comment">Top page description:</label>
+        <textarea class="form-control" rows="7"
+                  [ngModel]="descriptions['page_top_user']?.text"
+                  (input)="addNewArrayItemOnDemand($event, 'page_top_user')"></textarea>
+    </div>
+    <button class="btn btn-primary btn-lg col-md-offset-4 col-md-4"
+            (click)="updateDescription('page_top_user')"
+            *ngIf="isOld['page_top_user']">
+        Update
+    </button>
+    <button class="btn btn-primary btn-lg col-md-offset-4 col-md-4"
+            *ngIf="!isOld['page_top_user']"
+            (click)="addDescription('page_top_user')">
+        Add
+    </button>
+</div>
+
+<div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+        <div class="form-group col-md-6">
+            <label for="comment">Select Casino:</label>
+            <select class="form-control" name="casino"
+                    (change)="onCasinoSelect($event)"
+                    [ngModel]="casino.id">
+                <option *ngFor="let casino of casinos" value="{{casino.id}}">
+                    {{casino.name}}
+                </option>
+            </select>
+        </div>
+        <div class="row"></div>
+        <div *ngIf="casino.id">
+            <form>
+                <div class="form-group col-md-6">
+                    <label for="key">Key</label>
+                    <input class="form-control" type="text" name="key" id="key"
+                           [(ngModel)]="casinoTableRow.key"
+                           placeholder="Key" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Value</label>
+                    <input class="form-control" type="text" name="value"
+                           [(ngModel)]="casinoTableRow.value"
+                           placeholder="Value" required>
+                </div>
+                <button type="submit"
+                        class="btn btn-lg btn-success add_button col-md-6 col-md-offset-3"
+                        (click)="addCasinoTableRow()"
+                        *ngIf="!isUpdateCasinoTableRow"
+                >Add
+                </button>
+                <button type="submit"
+                        *ngIf="isUpdateCasinoTableRow"
+                        class="btn btn-lg btn-warning add_button col-md-offset-2 col-md-4 cancel-btn"
+                        (click)="cancelUpdateCasinoTableRow()"
+                >Cancel
+                </button>
+                <button type="submit"
+                        *ngIf="isUpdateCasinoTableRow"
+                        class="btn btn-lg btn-success add_button col-md-4"
+                        (click)="updateCasinoTableRow()"
+                >Update
+                </button>
+            </form>
+
+            <!-- Casino Table -->
+            <table class="table-striped col-md-12">
+                <tr *ngFor="let row of casino.casinoRows">
+                    <td>{{row.key}}</td>
+                    <td>{{row.value}}</td>
+                    <td>
+                        <span class="glyphicon glyphicon-pencil update"
+                              aria-hidden="true" data-toggle="modal"
+                              data-target="#login-modal"
+                              (click)="findCasinoTableRowToUpdate(row)">
+                        </span>
+                        <span class="glyphicon glyphicon-remove remove"
+                              aria-hidden="true"
+                              (click)="deleteCasinoTableRow(row)">
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+        <div class="form-group col-md-12">
+            <label for="casinoDescription">Stream description: </label>
+            <textarea class="form-control" rows="7"
+                      id="casinoDescription" [(ngModel)]="newStreamDescription.text"
+                      placeholder="Stream description" required></textarea>
+        </div>
+        <button type="submit"
+                *ngIf="!isUpdateStreamDescription || newStreamDescription.text.length === 0"
+                class="btn btn-lg btn-success add_button col-md-offset-4 col-md-4"
+                (click)="addStreamDescription()"
+                >Add
+        </button>
+        <button type="submit"
+                *ngIf="isUpdateStreamDescription && newStreamDescription.text.length !== 0"
+                class="btn btn-lg btn-warning add_button col-md-offset-2 col-md-4 cancel-btn"
+                (click)="cancelUpdateStreamDescription()"
+        >Cancel
+        </button>
+        <button type="submit"
+                *ngIf="isUpdateStreamDescription && newStreamDescription.text.length !== 0"
+                class="btn btn-lg btn-success add_button col-md-4"
+                (click)="updateStreamDescription()"
+        >Update
+        </button>
+        <!-- Casino Table -->
+        <table class="col-md-12 table-striped">
+            <tr>
+                <th>Description</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let streamDescription of streamDescriptions">
+                <td>{{streamDescription.text}}</td>
+                <td>
+                    <span class="glyphicon glyphicon-pencil update"
+                          aria-hidden="true" data-toggle="modal"
+                          data-target="#login-modal"
+                          (click)="findStreamDescriptionToUpdate(streamDescription)">
+                    </span>
+                    <span class="glyphicon glyphicon-remove remove"
+                          aria-hidden="true"
+                          (click)="deleteStreamDescription(streamDescription)">
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="row rowmain">
+      <div class="title_link">
+        <h1>{{streamer.name}}</h1>
+      </div>
+      <div class="content">
+        <img class="logo" src="http://via.placeholder.com/300x300" *ngIf="!streamer?.image_link">
+        <img class="logo" src="{{streamer?.image_link}}" *ngIf="streamer?.image_link">
+        <p class="lead">
+           {{streamer.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

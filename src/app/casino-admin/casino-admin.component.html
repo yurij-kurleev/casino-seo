@@ -1,0 +1,214 @@
+<!-- BEGIN # BOOTSNIP INFO -->
+<div class="container">
+    <div class="row">
+        <p class="text-center">
+            <a href="#" class="btn btn-success btn-lg pull-right plus_button" role="button"
+               data-toggle="modal" data-target="#banner-modal" (click)="clearForm()">
+                Add Banner
+            </a>
+            <a href="#" class="btn btn-success btn-lg pull-right plus_button" role="button"
+               data-toggle="modal" data-target="#login-modal" (click)="clearForm()">
+                Add Casino
+            </a>
+        </p>
+    </div>
+</div>
+<!-- END # BOOTSNIP INFO -->
+
+<!-- BEGIN # MODAL LOGIN -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <div id="div-forms">
+                    <!-- Begin # Login Form -->
+                    <form id="login-form">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" type="text" name="name" id="name"
+                                       placeholder="Name" [(ngModel)]="newCasino.name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="5" name="description"
+                                          placeholder="Description"
+                                          [(ngModel)]="newCasino.description" required>
+                                </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Bonus text</label>
+                                <input class="form-control" type="text" name="bonus_text"
+                                       placeholder="Bonus text" [(ngModel)]="newCasino.bonus_text"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label>Get bonus link</label>
+                                <input class="form-control" type="text" name="getBonus_link"
+                                       placeholder="Get bonus link"
+                                       [(ngModel)]="newCasino.getBonus_link" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Casino link</label>
+                                <input class="form-control" type="text" name="casino_link"
+                                       placeholder="Casino link" [(ngModel)]="newCasino.casino_link"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label>Casino logo</label>
+                                <input class="form-control" type="file" name="file"
+                                       placeholder="Casino logo" required
+                                       accept=".png,.jpg,.jpeg"
+                                       id="file">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div>
+                                <button type="submit"
+                                        *ngIf="!isChangingCasino"
+                                        class="btn btn-lg btn-block btn-success add_button"
+                                        (click)="addCasino()">Add
+                                </button>
+                                <button type="submit"
+                                        *ngIf="isChangingCasino"
+                                        class="btn btn-lg btn-block btn-success add_button"
+                                        (click)="updateCasino()">Update
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="banner-modal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <div>
+                    <!-- Begin # Login Form -->
+                    <form id="banner-form">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" type="text" name="name" id="title"
+                                       placeholder="Name" [(ngModel)]="newBanner.text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Select casino</label>
+                                <select class="form-control casinoselect" name="casino" id="sel1"
+                                        [(ngModel)]="newBanner.casino_id">
+                                    <option *ngFor="let casino of getCasinosWithoutBanner()" value="{{casino.id}}">
+                                        {{casino.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Banner</label>
+                                <input class="form-control" type="file" name="file"
+                                       placeholder="Casino logo" required
+                                       accept=".png,.jpg,.jpeg"
+                                       id="banner">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div>
+                                <button type="submit"
+                                        class="btn btn-lg btn-block btn-success add_button"
+                                        (click)="addBanner()">Add
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END # MODAL LOGIN -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Casinos</h2>
+            <table class="table table-striped">
+                <tr class="table-row">
+                    <th></th>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>bonus text</th>
+                    <th>bonus link</th>
+                    <th>casino link</th>
+                    <th>position</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let casino of casinos" class="table-row">
+
+                    <td>
+                        <img src="{{casino?.logo_image}}"
+                             *ngIf="casino?.logo_image"
+                             class="logo" alt="logo">
+                        <img src="http://via.placeholder.com/40x40"
+                             *ngIf="!casino?.logo_image"
+                             class="logo" alt="logo">
+                    </td>
+                    <td>{{casino.id}}</td>
+                    <td>{{casino.name}}</td>
+                    <td>{{casino.description}}</td>
+                    <td>{{casino.bonus_text}}</td>
+                    <td>{{casino.getBonus_link}}</td>
+                    <td>{{casino.casino_link}}</td>
+                    <td>{{casino.position}}</td>
+                    <td id="actions">
+                        <span class="glyphicon glyphicon-pencil"
+                              aria-hidden="true" id="update" data-toggle="modal"
+                              data-target="#login-modal" (click)="findCasinoToUpdate(casino)">
+                        </span>
+                        <span class="glyphicon glyphicon-remove"
+                              id="remove" aria-hidden="true"
+                              (click)="deleteCasino(casino.id)">
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Banners</h2>
+            <table class="table table-striped">
+                <tr class="table-row">
+                    <th></th>
+                    <th>id</th>
+                    <th>text</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let banner of banners" class="table-row">
+
+                    <td>
+                        <img src="{{banner?.image_link}}"
+                             *ngIf="banner?.image_link"
+                             class="banner-logo" alt="logo">
+                        <img src="http://via.placeholder.com/350x40"
+                             *ngIf="!banner?.image_link"
+                             class="banner-logo" alt="logo">
+                    </td>
+                    <td>{{banner.id}}</td>
+                    <td>{{banner.text}}</td>
+                    <td id="banner-actions">
+                        <span class="glyphicon glyphicon-remove"
+                              id="remove-banner" aria-hidden="true"
+                              (click)="deleteBanner(banner.id)">
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

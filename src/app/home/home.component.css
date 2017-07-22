@@ -1,0 +1,20 @@
+.main {
+  padding-top: 30px;
+}
+
+@media (min-width: 768px) {
+  .main {
+    /*padding-right: 40px;
+    padding-left: 40px;*/
+  }
+}
+
+.main > .rowmain{
+  padding-top: 45px;
+}
+
+
+.stream img{
+  min-height: 295px;
+  max-height: 295px;
+}

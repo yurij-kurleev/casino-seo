@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 onjumbo">
+        <div class="jumbotron">
+          <h3>Top online casino</h3>
+          <p *ngIf="description.text.length > 0">
+            {{description.text}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th class="">Online Casino</th>
+              <th class="bonus_table hidden-xs">Bonus</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let casino of casinos">
+             <td class="logo_link">
+                <a class="logo_name_link" [routerLink]="['/casino/' + casino.id]" *ngIf="casino.logo_image">
+                                    <img src="{{casino.logo_image}}"
+                                         class="logo img-thumbnail">{{casino.name}}
+                                </a>
+                <a class="logo_name_link" [routerLink]="['/casino/' + casino.id]" *ngIf="!casino.logo_image">
+                                    <img src="http://via.placeholder.com/40x40"
+                                         class="logo img-thumbnail">{{casino.name}}
+                                </a>
+                </td>
+                <td class="bonus_table hidden-xs"> {{casino.bonus_text}}</td>
+                <td class="btnintable pull-right">
+                  <a rel="nofollow" class="btn btn-warning tablebtn" href="{{casino.casino_link}}">Visit Casino</a>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+

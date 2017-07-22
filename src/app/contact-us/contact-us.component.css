@@ -1,0 +1,67 @@
+body {
+  padding-top: 50px;
+}
+
+.main {
+  padding-top: 30px;
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+.main>.rowmain {
+  padding-top: 30px;
+}
+
+.form-inline {
+  padding-top: 2%;
+}
+
+.message_container {
+  width: 70%;
+  padding-top: 20px;
+}
+
+.btn-primary {
+  width: 30%;
+  margin-top: 10px;
+}
+
+.form-control {
+  width: 100%
+}
+
+@media (max-width: 768px) {
+h2{
+  margin-left: 4%;
+}
+
+
+.btn-primary {
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+  .message_container {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .btn_mobile {
+
+    margin-bottom: 10px;;
+    font-size: 20px;
+margin-top: 30px;
+    height: 50px;
+
+    width: 100%
+  }
+}
+
+
+

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="row rowmain">
+      <div class="panel panel-default" *ngFor="let post of posts">
+        <a [routerLink]="['/blog/' + post.id]">
+          <div class="panel-body">
+            <div class=" col-md-2   nopading">
+              <div>
+
+                <img class="logo " src="http://via.placeholder.com/200x200" *ngIf="!post.image_link" />
+                <img class="logo" src="{{post.image_link}}" *ngIf="post.image_link" />
+
+              </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2 col-lg-offset-1">
+            <h2>{{post.title}}</h2>
+            <p class="panel_text">
+              {{post.description.substr(0, 400) + '...'}}
+            </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

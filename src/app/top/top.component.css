@@ -1,0 +1,80 @@
+body {
+  padding-top: 50px;
+}
+
+.main {
+  padding-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .onjumbo {
+    margin-top: 15%;
+  }
+}
+
+.main>.rowmain {
+  padding-top: 30px;
+}
+
+.onjumbo {
+  padding-top: 7%;
+}
+
+.jumbotron {
+
+  padding-top: 5px;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron p {
+font-size: 20px;
+}
+
+.tablebtn {
+
+  color: #fff;
+}
+
+
+
+
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+  vertical-align: middle;
+}
+
+.table-borderless>tbody>tr>td,
+.table-borderless>tbody>tr>th,
+.table-borderless>tfoot>tr>td,
+.table-borderless>tfoot>tr>th,
+.table-borderless>thead>tr>td,
+.table-borderless>thead>tr>th {
+  border: none !important;
+}
+
+img{
+  max-width: 50px;
+  min-width: 50px;
+}
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.redirect-btn{
+  color: #fff;
+  text-decoration: none;
+}

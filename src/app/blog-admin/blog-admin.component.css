@@ -1,0 +1,48 @@
+.plus_button {
+    border-radius: 5px;
+    margin-top: 70px;
+    margin-bottom: 40px;
+}
+
+.form-control {
+    border-radius: 0;
+    margin: 10px 0;
+}
+
+.form-group{
+    text-align: left !important;
+}
+
+textarea{
+    resize: none;
+}
+
+.add_button:disabled{
+    cursor: pointer;
+}
+
+.table-row{
+    font-size: 2rem;
+}
+
+#actions{
+    display: flex;
+    justify-content: space-between;
+}
+
+#update, #remove {
+    cursor: pointer;
+}
+
+#update:hover{
+    color: #4fa400;
+}
+
+#remove:hover{
+    color: #ff0000;
+}
+
+.logo {
+    max-width: 100px;
+    min-width: 100px;
+}

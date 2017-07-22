@@ -1,0 +1,62 @@
+.plus_button {
+    border-radius: 5px;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    margin-left: 1%;
+}
+
+.form-control {
+    border-radius: 0;
+    margin: 10px 0;
+}
+
+.form-group{
+    text-align: left !important;
+}
+
+textarea{
+    resize: none;
+}
+
+.add_button:disabled{
+    cursor: pointer;
+}
+
+.table-row{
+    font-size: 2rem;
+}
+
+#actions, #banner-actions{
+    display: flex;
+    justify-content: space-between;
+}
+
+#update, #remove, #update-banner, #remove-banner {
+    cursor: pointer;
+}
+
+#update:hover, #update-banner:hover{
+    color: #4fa400;
+}
+
+#remove:hover, #remove-banner:hover{
+    color: #ff0000;
+}
+
+.logo {
+    max-width: 40px;
+    min-width: 40px;
+    margin-right: 5px;
+}
+
+.banner-logo {
+    max-width: 350px;
+    min-width: 350px;
+    max-height: 40px;
+    min-height: 40px;
+    margin-right: 5px;
+}
+
+h2{
+    text-align: center;
+}

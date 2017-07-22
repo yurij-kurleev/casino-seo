@@ -1,0 +1,76 @@
+body {
+  padding-top: 50px;
+}
+
+.main {
+  padding-top: 30px;
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+.main>.rowmain {
+  padding-top: 45px;
+}
+
+.panel-body {
+  overflow: hidden;
+  padding: 0;
+
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+a:hover{
+  text-decoration: none;
+  color: #4c4c4c;
+}
+.nopading {
+  padding-left: 0;
+}
+
+.panel_text {
+  padding-top: 10px;
+  width: 97%;
+}
+
+.logo {
+  float: left;
+  margin-right: 16px;
+  max-width: 230px;
+  max-height: 200px;
+  min-height: 200px;
+  min-width: 230px;
+}
+
+@media (max-width: 736px) {
+  .logo {
+
+    width: 100%;
+    max-width: 343px;
+    max-height: 200px;
+    min-height: 200px;
+    min-width: 343px;
+    float: none;
+  }
+  h2 {
+    padding-left: 10px;
+    font-size: 20px;
+  }
+
+  .panel_text {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 790px) {
+  .logo {
+    margin-right: 20px;
+    }
+}

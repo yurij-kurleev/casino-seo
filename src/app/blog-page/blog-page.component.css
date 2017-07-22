@@ -1,0 +1,41 @@
+body {
+    padding-top: 50px;
+}
+
+.main {
+    padding-top: 30px;
+}
+
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+
+.jumbotron {
+    overflow: hidden;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.main > .rowmain {
+    padding-top: 30px;
+}
+
+.logo {
+    padding-right: 20px;
+    float: left;
+    max-width: 500px;
+    min-width: 500px;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        float: none;
+        padding-bottom: 20px;
+        padding-right: 0;
+        max-width: 325px;
+        min-width: 325px;
+    }
+}

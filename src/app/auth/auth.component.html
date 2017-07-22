@@ -1,0 +1,9 @@
+<h2 class="col-md-6 col-md-offset-4">Authorize</h2>
+<form class="col-md-6 col-md-offset-4 form">
+    <div class="form-group">
+        <label>Token</label>
+        <input class="form-control" type="password" name="token" [(ngModel)]="token"
+               placeholder="Token" required>
+    </div>
+    <button class="btn btn-success btn-block" (click)="authorize()">Login</button>
+</form>

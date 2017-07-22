@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div class="embed-responsive embed-responsive-16by9 stream"
+                     *ngIf="stream?.streamLink && transform(stream?.streamLink.replace('watch?v=', 'embed/')) && stream?.streamLink.search('youtube') !== -1">
+                    <iframe class="embed-responsive-item "
+                            [src]="transform(stream?.streamLink.replace('watch?v=', 'embed/'))"
+                            *ngIf="transform(stream?.streamLink.replace('watch?v=', 'embed/'))">
+                    </iframe>
+                </div>
+                <div class="embed-responsive embed-responsive-16by9 stream"
+                     *ngIf="stream?.streamLink && stream?.streamLink.search('twitch') !== -1">
+                    <iframe class="embed-responsive-item" allowfullscreen
+                            [src]="transform(stream?.streamLink + '&html5')">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <h3>Top online casino</h3>
+                <div class="jumbotron" *ngIf="description?.text">
+                    <p class="lead">
+                        {{description.text}}
+                    </p>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+

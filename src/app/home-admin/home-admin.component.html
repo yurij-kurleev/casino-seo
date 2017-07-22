@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <button class="btn btn-primary btn-lg delete-btn pull-right" (click)="deleteAllShadowedStreams()"
+            [disabled]="shadowedStreams.length === 0">
+        Unblock All Videos
+    </button>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="row rowmain" *ngIf="streams">
+            <div class="col-xs-5 col-md-3 stream thumbnail"
+                 *ngFor="let stream of streams"
+                 [ngClass]="{'shadowed': isShadowedStream(stream)}"
+                 (click)="toggleStreamState(stream)">
+                <img src="{{stream.logoImage}}" class="img-responsive logo">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <div class="form-group ">
+            <label for="sel1">Select Casino:</label>
+            <select class="form-control casinoselect" id="sel1" [(ngModel)]="newTopCasino">
+                <option *ngFor="let casino of this.getUnusedCasinos()" [ngValue]="casino">
+                    {{casino.name}}
+                </option>
+            </select>
+            <div>
+                <button class="btn btn-success addbtn"
+                        [disabled]="!newTopCasino"
+                        (click)="addTopCasino(newTopCasino)">ADD</button>
+            </div>
+        </div>
+        <ul class="nav nav-sidebar" [dragula]='"first-bag"' [dragulaModel]='topCasinos'>
+            <li class="sidebarli" *ngFor="let topCasino of topCasinos">
+                <p>{{topCasino.name}}
+                    <span class="glyphicon glyphicon-remove"
+                          (click)="deleteTopCasino(topCasino)"></span>
+                </p>
+            </li>
+        </ul>
+
+    </div>
+</div>
